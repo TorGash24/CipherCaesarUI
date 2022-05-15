@@ -1,21 +1,13 @@
 package com.example.caesarproject;
 
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
+
 import com.jfoenix.controls.JFXRadioButton;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -38,9 +30,6 @@ public class Controller {
     @FXML
     private JFXRadioButton bruteForceRadioButton;
 
-    @FXML
-    private StackPane stackPaneDialog;
-
     public void clickOnStartButton() {
         if (inputPathTextField.getText().isEmpty()) {
             statusMessageLabel.setText("Вы не указали путь!");
@@ -49,7 +38,7 @@ public class Controller {
             if (!Files.exists(path)) {
                 statusMessageLabel.setText("Файл не был найден, повторите попытку снова!");
             } else {
-                String textFromFile = "";
+                String textFromFile;
                 try {
                     textFromFile = CipherUtils.getTextFromFile(path);
                     if (!cipherRadioButton.isSelected() && !unCipherRadioButton.isSelected() && !bruteForceRadioButton.isSelected()) {
